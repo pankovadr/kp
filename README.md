@@ -18,6 +18,6 @@
 При X = 26.0
 Ожидаемый результат: Q = 50.00
 ## Реализация программы
- ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.]()
+ ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](2026-10-18_19-32-48.png)
 ## Блок-схема
  ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.]()
