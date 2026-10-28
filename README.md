@@ -29,6 +29,7 @@ $$
 ## Контрольный пример:
 При X = 26.0
 Ожидаемый результат: Q = 50.00
-## Блок-схема
+## Блок-схема 1 
  ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/pankovadr/kp/blob/master/scheme_kt1.png)
- ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.]()
+ ## Блок-схема 2
+ ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/pankovadr/kp/blob/master/2026-10-28_16-27-31.png)
