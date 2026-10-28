@@ -2,11 +2,18 @@
 #include <stdio.h>
 #include <math.h>
 #include <locale.h>
-#include "kp.h" 
+double read_x(void);
+double compute_q(double x);
+int control(double q);
+void print_state(int state);
+void statistics(const double* q, int n);
 double read_x(void) {
     double x;
     printf("Введите значение X: ");
-    scanf("%lf", &x);
+    if (scanf("%lf", &x) != 1) {
+        printf("Ошибка ввода!\n");
+        return 0.0;
+    }
     return x;
 }
 double compute_q(double x) {
@@ -20,14 +27,12 @@ double compute_q(double x) {
         return 0.25 * (x - 32) * (x - 32) + 55;
     }
 }
-
 int control(double q) {
     double deviation = fabs(q - 50.00);
     if (deviation > 10) {
-        if (q > 50) return 2;
-        else return 1;
+        return (q > 50) ? 2 : 1; 
     }
-    return 0;
+    return 0; 
 }
 void print_state(int state) {
     if (state == 2) {
@@ -41,22 +46,17 @@ void print_state(int state) {
     }
 }
 void statistics(const double* q, int n) {
-    (void)q;
+    (void)q; 
     (void)n;
+    printf("Статистика: в разработке\n");
 }
-
 int main(void) {
-
     setlocale(LC_ALL, "ru_RU.UTF-8");
-
-    double x = read_x();       
-    double q = compute_q(x);     
+    double x = read_x();
+    double q = compute_q(x);
     printf("Q(X) = %.2f\n", q);
-
-    int state = control(q);       
-    print_state(state);        
-
-  
+    int state = control(q);
+    print_state(state);
     double arr[] = { q };
     statistics(arr, 1);
 
