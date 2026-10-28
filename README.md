@@ -31,3 +31,4 @@ $$
 Ожидаемый результат: Q = 50.00
 ## Блок-схема
  ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/pankovadr/kp/blob/master/scheme_kt1.png)
+ ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.]()
