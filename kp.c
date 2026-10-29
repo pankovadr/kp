@@ -6,13 +6,11 @@
 #include <math.h>
 #include "kp.h"
 
-// Чтение температуры
 int read_x(double *x)
 {
     return scanf("%lf", x) == 1;
 }
 
-// Вычисление показателя Q(X)
 double compute_q(double x)
 {
     if (x < X_BOUND_1)
@@ -32,7 +30,6 @@ double compute_q(double x)
     }
 }
 
-// Оперативный контроль
 int control(double q)
 {
     if (fabs(q - Q_NOMINAL) > Q_DEVIATION_LIMIT)
@@ -43,11 +40,6 @@ int control(double q)
     return STATE_NORMAL;
 }
 
-// Заглушка статистического анализа для КТ2
 void statistics(void)
 {
-    /*
-       Статистический анализ будет
-       реализован на следующем этапе.
-    */
 }
