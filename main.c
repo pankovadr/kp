@@ -1,19 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <locale.h>
 #include "kp.h"
 
 int main(void) {
+    setlocale(LC_ALL, "RUS");
     double x;
     double q;
     int state;
     char filename[100];
-    
+
     setlocale(LC_ALL, "");
 
     printf("Введите имя файла с данными: ");
     scanf("%99s", filename);
 
-    FILE *f = fopen(filename, "r");
+    FILE* f = fopen(filename, "r");
     if (f == NULL) {
         printf("Ошибка: не удалось открыть файл %s\n", filename);
         return 1;
@@ -23,11 +25,9 @@ int main(void) {
     printf("------------------------------------------\n");
 
     int count = 0;
-    // Потоковая обработка
     while (read_x(f, &x)) {
         count++;
-        
-        // Валидация диапазона
+
         if (x < X_MIN || x > X_MAX) {
             printf("%-10.2f | %-10s | ОШИБКА (вне диапазона)\n", x, "-");
             continue;
@@ -36,8 +36,8 @@ int main(void) {
         q = compute_q(x);
         state = control(q);
 
-        printf("%-10.2f | %-10.2f | %s\n", 
-               x, q, (state == STATE_ALARM) ? "ТРЕВОГА" : "НОРМА");
+        printf("%-10.2f | %-10.2f | %s\n",
+            x, q, (state == STATE_ALARM) ? "ТРЕВОГА" : "НОРМА");
     }
 
     if (count == 0) {
