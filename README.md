@@ -207,5 +207,5 @@ Q(X) = 50.00
 Для проверки вычислений приведены три ручных расчёта, охватывающие все ветви кусочной функции.
 
 Функция статистического анализа добавлена в виде заглушки и будет реализована на следующем этапе курсового проекта.
-Блок-схема контроля:![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/pankovadr/Kt3/blob/main/Схемакт3.drawio.png)
+
 
