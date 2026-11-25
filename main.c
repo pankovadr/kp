@@ -1,46 +1,50 @@
-#ifdef _MSC_VER
-#define _CRT_SECURE_NO_WARNINGS
-#endif
-
 #include <stdio.h>
 #include <locale.h>
 #include "kp.h"
 
-int main(void)
-{
+int main(void) {
     double x;
     double q;
     int state;
+    char filename[100];
+    
     setlocale(LC_ALL, "");
-    printf("Курсовой проект. Вариант 8.\n");
-    printf("Мониторинг температуры охлаждающей жидкости реактора.\n");
-    printf("Программа преобразует температуру X в показатель Q\n");
-    printf("и контролирует состояние технологического процесса.\n\n");
-    printf("Введите температуру X (10..50 °C): ");
 
-    if (!read_x(&x))
-    {
-        printf("Ошибка: необходимо ввести число.\n");
+    printf("Введите имя файла с данными: ");
+    scanf("%99s", filename);
+
+    FILE *f = fopen(filename, "r");
+    if (f == NULL) {
+        printf("Ошибка: не удалось открыть файл %s\n", filename);
         return 1;
     }
 
-    if (x < X_MIN || x > X_MAX)
-    {
-        printf("Ошибка: температура выходит за допустимые пределы.\n");
-        return 1;
+    printf("\n%-10s | %-10s | %-10s\n", "X, °C", "Q(X)", "Состояние");
+    printf("------------------------------------------\n");
+
+    int count = 0;
+    // Потоковая обработка
+    while (read_x(f, &x)) {
+        count++;
+        
+        // Валидация диапазона
+        if (x < X_MIN || x > X_MAX) {
+            printf("%-10.2f | %-10s | ОШИБКА (вне диапазона)\n", x, "-");
+            continue;
+        }
+
+        q = compute_q(x);
+        state = control(q);
+
+        printf("%-10.2f | %-10.2f | %s\n", 
+               x, q, (state == STATE_ALARM) ? "ТРЕВОГА" : "НОРМА");
     }
-    q = compute_q(x);
-    state = control(q);
-    printf("\nX = %.2f °C\n", x);
-    printf("Q(X) = %.2f\n", q);
-    if (state == STATE_ALARM)
-    {
-        printf("Состояние: ТРЕВОГА\n");
+
+    if (count == 0) {
+        printf("Файл пуст или содержит некорректные данные.\n");
     }
-    else
-    {
-        printf("Состояние: НОРМА\n");
-    }
-    statistics();
+
+    fclose(f);
+    printf("\nОбработка завершена. Всего записей: %d\n", count);
     return 0;
 }
