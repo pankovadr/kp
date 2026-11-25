@@ -31,7 +31,7 @@
 #define STATE_ALARM 1
 
 // Прототипы функций
-int read_x(double *x);
+int read_x(FILE *f, double *x);
 double compute_q(double x);
 int control(double q);
 void statistics(void);
