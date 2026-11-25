@@ -1,9 +1,3 @@
-#ifndef KP_H
-#define KP_H
-
-#include <stdio.h>
-
-#define X_MIN 10.0
 #define X_MAX 50.0
 #define X_BOUND_1 20.0
 #define X_BOUND_2 32.0
@@ -19,7 +13,7 @@
 #define STATE_NORMAL 0
 #define STATE_ALARM 1
 
-int read_x(FILE *f, double *x);
+int read_x(FILE* f, double* x);
 double compute_q(double x);
 int control(double q);
 void statistics(void);
